@@ -1,33 +1,16 @@
-import 'package:bookly/core/utils/app_constants.dart';
-import 'package:bookly/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class SplashWidget extends StatefulWidget {
-  const SplashWidget({Key? key}) : super(key: key);
+import '../../../../../core/utils/assets_data.dart';
 
-  @override
-  State<SplashWidget> createState() => _SplashWidgetState();
-}
+class SplashWidget extends StatelessWidget {
+  final Animation<Offset> slidingImage;
+  final Animation<Offset> slidingText;
 
-class _SplashWidgetState extends State<SplashWidget>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation<Offset> _slidingImage;
-  late Animation<Offset> _slidingText;
-
-  @override
-  void initState() {
-    super.initState();
-    initAnimation();
-    navigatorToHome();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _animationController.dispose();
-  }
+  const SplashWidget({
+    Key? key,
+    required this.slidingImage,
+    required this.slidingText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,20 +19,20 @@ class _SplashWidgetState extends State<SplashWidget>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         AnimatedBuilder(
-          animation: _slidingImage,
+          animation: slidingImage,
           builder: (context, _) => SlideTransition(
-            position: _slidingImage,
+            position: slidingImage,
             child: Image.asset(
-              AppConstants.kLogo,
+              AssetsData.kLogo,
               width: 500,
             ),
           ),
         ),
         const SizedBox(height: 5),
         AnimatedBuilder(
-          animation: _slidingText,
+          animation: slidingText,
           builder: (context, _) => SlideTransition(
-            position: _slidingText,
+            position: slidingText,
             child: const Text(
               'Read Free Books',
               textAlign: TextAlign.center,
@@ -58,36 +41,6 @@ class _SplashWidgetState extends State<SplashWidget>
           ),
         ),
       ],
-    );
-  }
-
-  void initAnimation() {
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 700),
-    );
-    _slidingText = Tween<Offset>(
-      begin: const Offset(0, 7),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInQuint));
-
-    _slidingImage = Tween<Offset>(
-      begin: const Offset(0, -4),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(
-        parent: _animationController, curve: Curves.easeInQuint));
-    _animationController.forward();
-  }
-
-  void navigatorToHome() {
-    Future.delayed(
-      const Duration(seconds: 3),
-      () => Get.to(
-        () => const HomeView(),
-        duration: AppConstants.kTransitionDuration,
-        transition: Transition.fade,
-      ),
     );
   }
 }

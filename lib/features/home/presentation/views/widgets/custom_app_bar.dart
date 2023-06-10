@@ -11,7 +11,6 @@ class CustomAppBar extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
         top: deviceSize.height * 0.04,
-
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

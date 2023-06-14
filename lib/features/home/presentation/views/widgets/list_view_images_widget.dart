@@ -1,14 +1,14 @@
 import 'package:bookly/core/utils/assets_data.dart';
 import 'package:flutter/material.dart';
 
-class CustomListViewImages extends StatelessWidget {
-  const CustomListViewImages({Key? key}) : super(key: key);
+class ListViewImagesWidget extends StatelessWidget {
+  const ListViewImagesWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.of(context).size;
     return SizedBox(
-      height: deviceSize.height * 0.3,
+      height: deviceSize.height * 0.25,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 5,

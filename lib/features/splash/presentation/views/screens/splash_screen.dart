@@ -1,8 +1,7 @@
+import 'package:bookly/core/utils/app_routers.dart';
+import 'package:bookly/features/home/presentation/views/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-import '../../../../../core/utils/app_constants.dart';
-import '../../../../home/presentation/views/screens/home_screen.dart';
 import '../widgets/splash_widget.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -66,10 +65,9 @@ class _SplashScreenState extends State<SplashScreen>
   void navigatorToHome() {
     Future.delayed(
       const Duration(seconds: 3),
-      () => Get.to(
-        () => const HomeScreen(),
-        duration: AppConstants.kTransitionDuration,
-        transition: Transition.fade,
+      () => AppRouters.goAndReplacement(
+        context: context,
+        route: HomeScreen.route,
       ),
     );
   }

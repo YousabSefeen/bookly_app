@@ -17,6 +17,10 @@ abstract class AppRouters {
     Navigator.of(context).pushNamed(route, arguments: arguments);
   }
 
+  static pop(BuildContext context) {
+    Navigator.of(context).pop();
+  }
+
   static goAndReplacement({
     required BuildContext context,
     required String route,

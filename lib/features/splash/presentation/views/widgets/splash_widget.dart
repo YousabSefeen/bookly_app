@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/assets_data.dart';
+import '../../../../../core/utils/app_assets.dart';
 
 class SplashWidget extends StatelessWidget {
   final Animation<Offset> slidingImage;
@@ -23,7 +23,7 @@ class SplashWidget extends StatelessWidget {
           builder: (context, _) => SlideTransition(
             position: slidingImage,
             child: Image.asset(
-              AssetsData.kLogo,
+              AppAssets.kLogo,
               width: 500,
             ),
           ),

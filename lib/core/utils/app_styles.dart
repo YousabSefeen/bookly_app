@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-abstract class Styles {
+abstract class AppStyles {
   static const kGTSectraFine = 'GT Sectra Fine';
   static const textStyle18 = TextStyle(
     fontSize: 18,
     fontWeight: FontWeight.w600,
+    color: Colors.white,
   );
-  static const textStyle14 = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w400, //regular
-    color: Color(0xff707070),
-  );
+  static const TextStyle textStyle14 = TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w400, //regular
+      color: Colors.white);
   static const textStyle15 = TextStyle(
     fontSize: 15,
     fontWeight: FontWeight.w700, //regular

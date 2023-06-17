@@ -1,12 +1,19 @@
 import 'package:bookly/core/utils/app_constants.dart';
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/utils/app_routers.dart';
 import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  // runApp(
+  //   DevicePreview(
+  //     builder: (BuildContext context) => const MyApp(),
+  //   ),
+  // );
+   runApp(  const MyApp() );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,14 +21,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: AppConstants.kPrimaryColor,
-        textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, _) => MaterialApp(
+        builder: DevicePreview.appBuilder,
+        locale: DevicePreview.locale(context),
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+          appBarTheme: const AppBarTheme(
+            color: AppConstants.kPrimaryColor,
+          ),
+          scaffoldBackgroundColor: AppConstants.kPrimaryColor,
+          textTheme:
+              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+        ),
+        home: const SplashScreen(),
+        routes: AppRouters.routers,
       ),
-      home: const SplashScreen(),
-      routes: AppRouters.routers,
     );
   }
 }

@@ -1,9 +1,9 @@
-import 'package:bookly/features/home/presentation/views/widgets/app_bar_widget.dart';
+import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/styles.dart';
-import '../widgets/best_seller_list_view_widget.dart';
-import '../widgets/list_view_images_widget.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../widgets/best_seller_list_view.dart';
+import '../widgets/home_images_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = 'HomeScreen';
@@ -22,20 +22,16 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  AppBarWidget(),
-                  ListViewImagesWidget(),
-                  SizedBox(height: 35),
-                  Text('Best Seller', style: Styles.textStyle18),
-                  // SizedBox(height: 10),
+                  HomeAppBar(),
+                  HomeImagesListView(),
+                  SizedBox(height: 49),
+                  Text('Best Seller', style: AppStyles.textStyle18),
                 ],
               ),
             ),
           ),
           SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(8.0),
-              child: BestSellerListViewWidget(),
-            ),
+            child: BestSellerListView(),
           ),
         ],
       ),

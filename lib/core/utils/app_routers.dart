@@ -2,11 +2,13 @@ import 'package:bookly/features/home/presentation/views/screens/home_screen.dart
 import 'package:flutter/cupertino.dart';
 
 import '../../features/home/presentation/views/screens/book_details_screen.dart';
+import '../../features/search/presentation/views/screens/search_screen.dart';
 
 abstract class AppRouters {
   static Map<String, Widget Function(BuildContext)> routers = {
     HomeScreen.route: (context) => const HomeScreen(),
     BookDetailsScreen.route: (context) => const BookDetailsScreen(),
+    SearchScreen.route: (context) => const SearchScreen(),
   };
 
   static go({

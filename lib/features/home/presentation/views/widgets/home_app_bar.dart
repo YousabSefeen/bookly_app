@@ -1,6 +1,9 @@
 import 'package:bookly/core/utils/app_assets.dart';
+import 'package:bookly/core/utils/app_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../../search/presentation/views/screens/search_screen.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -19,7 +22,8 @@ class HomeAppBar extends StatelessWidget {
             height: deviceSize.height * 0.12,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () =>
+                AppRouters.go(context: context, route: SearchScreen.route),
             icon: Icon(
               FontAwesomeIcons.magnifyingGlass,
               size: deviceSize.width * 0.06,

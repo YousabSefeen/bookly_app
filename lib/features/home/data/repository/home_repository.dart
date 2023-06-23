@@ -4,6 +4,7 @@ import 'package:bookly/core/utils/api_services.dart';
 import 'package:bookly/features/home/data/models/home_model.dart';
 import 'package:bookly/features/home/data/repository/base_home_repository.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class HomeRepository implements BaseHomeRepository {
   final ApiServices apiServices;
@@ -13,7 +14,8 @@ class HomeRepository implements BaseHomeRepository {
   @override
   Future<Either<Failure, List<HomeModel>>> getHomeData() async {
     try {
-      final result = await apiServices.get(endPoint: ApiConstants.endPoint);
+      final result =
+          await apiServices.getHomeData(endPoint: ApiConstants.endPoint);
       List<HomeModel> books = [];
 
       for (var item in result['items']) {
@@ -21,7 +23,11 @@ class HomeRepository implements BaseHomeRepository {
       }
       return Right(books);
     } catch (error) {
-      return Left(ServerFailure());
+      if (error is DioException) {
+        return Left(ServerFailure.fromDioError(error));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
     }
   }
 }

@@ -12,17 +12,39 @@ class HomeRepository implements BaseHomeRepository {
   HomeRepository({required this.apiServices});
 
   @override
-  Future<Either<Failure, List<HomeModel>>> getHomeData() async {
+  Future<Either<Failure, List<HomeModel>>> fitchNewestBooks() async {
     try {
       final result =
-          await apiServices.getHomeData(endPoint: ApiConstants.endPoint);
-      List<HomeModel> books = [];
+          await apiServices.getHomeData(endPoint: ApiConstants.newestBooks);
+      List<HomeModel> newestBooks = [];
 
       for (var item in result['items']) {
-        books.add(HomeModel.fromJson(item));
+        newestBooks.add(HomeModel.fromJson(item));
       }
-      return Right(books);
+      return Right(newestBooks);
     } catch (error) {
+      if (error is DioException) {
+        return Left(ServerFailure.fromDioError(error));
+      } else {
+        return Left(ServerFailure(error.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<HomeModel>>> fitchProgrammingBooks() async {
+    final result =
+        await apiServices.getHomeData(endPoint: ApiConstants.programmingBooks);
+
+    try {
+      List<HomeModel> programmingBooks = [];
+
+      for (var item in result['items']) {
+        programmingBooks.add(item);
+      }
+      return Right(programmingBooks);
+    } catch (error) {
+      print('fitchProgrammingBooks');
       if (error is DioException) {
         return Left(ServerFailure.fromDioError(error));
       } else {

@@ -2,8 +2,6 @@ import 'package:bookly/core/utils/api_constants.dart';
 import 'package:dio/dio.dart';
 
 class ApiServices {
-
-
   final Dio _dio;
 
   ApiServices(this._dio);

@@ -12,7 +12,7 @@ class HomeRepository implements BaseHomeRepository {
   HomeRepository({required this.apiServices});
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fitchNewestBooks() async {
+  Future<Either<Failure, List<HomeModel>>> fetchNewestBooks() async {
     try {
       final result =
           await apiServices.getHomeData(endPoint: ApiConstants.newestBooks);
@@ -32,7 +32,7 @@ class HomeRepository implements BaseHomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fitchProgrammingBooks() async {
+  Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks() async {
     final result =
         await apiServices.getHomeData(endPoint: ApiConstants.programmingBooks);
 

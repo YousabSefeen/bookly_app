@@ -9,7 +9,8 @@ import 'home_state.dart';
 class NewestBooksCubit extends Cubit<NewestBooksStates> {
   final HomeRepository homeRepository;
 
-  NewestBooksCubit({required this.homeRepository}) : super(const NewestBooksStates());
+  NewestBooksCubit({required this.homeRepository})
+      : super(const NewestBooksStates());
 
   FutureOr<void> fitchNewestBooks() async {
     final result = await homeRepository.fetchNewestBooks();

@@ -1,10 +1,14 @@
 import 'package:bookly/core/utils/app_constants.dart';
+import 'package:bookly/core/utils/service_locator.dart';
+import 'package:bookly/features/home/presentation/controller/programming%20books/programming_books_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'core/utils/app_routers.dart';
+import 'core/utils/bloc_observer.dart';
 import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
@@ -13,7 +17,10 @@ void main() {
   //     builder: (BuildContext context) => const MyApp(),
   //   ),
   // );
-   runApp(  const MyApp() );
+
+  Bloc.observer = MyBlocObserver();
+  ServiceLocator().init();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -25,20 +32,36 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, _) => MaterialApp(
-        builder: DevicePreview.appBuilder,
-        locale: DevicePreview.locale(context),
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData.dark().copyWith(
-          appBarTheme: const AppBarTheme(
-            color: AppConstants.kPrimaryColor,
+      builder: (context, _) => MultiBlocProvider(
+        providers: [
+          // BlocProvider(
+          //   create: (context) => ProgrammingBooksCubit(
+          //     homeRepository: HomeRepository(
+          //       apiServices: ApiServices(Dio()),
+          //     ),
+          //   ),
+          // ),
+
+          BlocProvider(
+            create: (context) =>
+                getIt<ProgrammingBooksCubit>()..fetchProgrammingBooks(),
           ),
-          scaffoldBackgroundColor: AppConstants.kPrimaryColor,
-          textTheme:
-              GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+        ],
+        child: MaterialApp(
+          builder: DevicePreview.appBuilder,
+          locale: DevicePreview.locale(context),
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            appBarTheme: const AppBarTheme(
+              color: AppConstants.kPrimaryColor,
+            ),
+            scaffoldBackgroundColor: AppConstants.kPrimaryColor,
+            textTheme:
+                GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+          ),
+          home: const SplashScreen(),
+          routes: AppRouters.routers,
         ),
-        home: const SplashScreen(),
-        routes: AppRouters.routers,
       ),
     );
   }

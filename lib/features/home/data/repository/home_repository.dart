@@ -18,8 +18,8 @@ class HomeRepository implements BaseHomeRepository {
           await apiServices.getHomeData(endPoint: ApiConstants.newestBooks);
       List<HomeModel> newestBooks = [];
 
-      for (var item in result['items']) {
-        newestBooks.add(HomeModel.fromJson(item));
+      for (var books in result['items']) {
+        newestBooks.add(HomeModel.fromJson(books));
       }
       return Right(newestBooks);
     } catch (error) {
@@ -39,8 +39,8 @@ class HomeRepository implements BaseHomeRepository {
     try {
       List<HomeModel> programmingBooks = [];
 
-      for (var item in result['items']) {
-        programmingBooks.add(item);
+      for (var books in result['items']) {
+        programmingBooks.add(HomeModel.fromJson(books));
       }
       return Right(programmingBooks);
     } catch (error) {

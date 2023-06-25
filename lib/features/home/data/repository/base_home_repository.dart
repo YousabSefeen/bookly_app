@@ -5,5 +5,6 @@ import '../../../../core/errors/failure.dart';
 
 abstract class BaseHomeRepository {
   Future<Either<Failure, List<HomeModel>>> fetchNewestBooks();
+
   Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks();
 }

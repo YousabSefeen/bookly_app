@@ -33,10 +33,11 @@ class HomeRepository implements BaseHomeRepository {
 
   @override
   Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks() async {
-    final result =
-        await apiServices.getHomeData(endPoint: ApiConstants.programmingBooks);
+
 
     try {
+      final result =
+      await apiServices.getHomeData(endPoint: ApiConstants.programmingBooks);
       List<HomeModel> programmingBooks = [];
 
       for (var books in result['items']) {

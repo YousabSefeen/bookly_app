@@ -24,7 +24,7 @@ class ProgrammingBooksCubit extends Cubit<ProgrammingBooksStates> {
       ),
       (programmingBooks) => emit(
         state.copyWith(
-          programmingBooksState: RequestState.loading,
+          programmingBooksState: RequestState.loaded,
           programmingBooks: programmingBooks,
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:bookly/core/widgets/custom_loading_widget.dart';
+import 'package:bookly/core/widgets/custom_loading_horizontal_widget.dart';
 import 'package:bookly/features/home/presentation/controller/all%20books/all_books_cubit.dart';
 import 'package:bookly/features/home/presentation/controller/all%20books/all_books_state.dart';
 import 'package:bookly/features/home/presentation/views/widgets/custom_image.dart';
@@ -18,7 +18,7 @@ class AllBooksImagesListView extends StatelessWidget {
       builder: (context, state) {
         switch (state.allBooksState) {
           case RequestState.loading:
-            return const CustomLoadingWidget();
+            return const CustomLoadingHorizontalWidget();
           case RequestState.loaded:
             return SizedBox(
               height: deviceSize.height * 0.22,

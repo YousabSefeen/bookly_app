@@ -2,8 +2,8 @@ import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dar
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
+import '../widgets/all_books_images_list_view.dart';
 import '../widgets/free_books_list_view.dart';
-import '../widgets/home_images_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
   static const route = 'HomeScreen';
@@ -23,7 +23,7 @@ class HomeScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   HomeAppBar(),
-                  HomeImagesListView(),
+                  AllBooksImagesListView(),
                   SizedBox(height: 49),
                   Text('Free Programming Books', style: AppStyles.textStyle18),
                 ],

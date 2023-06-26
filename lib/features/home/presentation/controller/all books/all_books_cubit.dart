@@ -16,12 +16,12 @@ class AllBooksCubit extends Cubit<AllBooksStates> {
 
     result.fold(
       (failure) => emit(state.copyWith(
-        newestBooksState: RequestState.failure,
-        newestBooksErrorMessage: failure.errorMessage,
+        allBooksState: RequestState.failure,
+        allBooksErrorMessage: failure.errorMessage,
       )),
-      (newestBooks) => emit(state.copyWith(
-        newestBooks: newestBooks,
-        newestBooksState: RequestState.loading,
+      (allBooks) => emit(state.copyWith(
+        allBooks: allBooks,
+        allBooksState: RequestState.loaded,
       )),
     );
   }

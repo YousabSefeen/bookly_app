@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/app_constants.dart';
 import 'package:bookly/core/utils/app_routers.dart';
 import 'package:bookly/features/home/presentation/views/screens/book_details_screen.dart';
 import 'package:bookly/features/home/presentation/views/widgets/build_rating.dart';
@@ -31,7 +32,7 @@ class BestSellerListView extends StatelessWidget {
             children: [
               SizedBox(
                 width: deviceSize.width * 0.2,
-                child: const CustomImage(),
+                child: const CustomImage(imageUrl: AppConstants.messi),
               ),
               Expanded(
                 child: Padding(

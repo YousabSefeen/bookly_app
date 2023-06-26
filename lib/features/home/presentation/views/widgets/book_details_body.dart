@@ -1,6 +1,7 @@
 import 'package:bookly/features/home/presentation/views/widgets/similar_book_list_view.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_constants.dart';
 import '../../../../../core/utils/app_styles.dart';
 import 'book_details_actions.dart';
 import 'build_rating.dart';
@@ -11,7 +12,7 @@ class BookDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
+    Size deviceSize = MediaQuery.sizeOf(context);
     return Padding(
       padding: const EdgeInsets.symmetric(
         vertical: 20,
@@ -23,7 +24,9 @@ class BookDetailsBody extends StatelessWidget {
             Container(
               height: constraints.maxHeight * 0.3,
               margin: EdgeInsets.symmetric(horizontal: deviceSize.width * 0.22),
-              child: const CustomImage(),
+              child: const CustomImage(
+                imageUrl: AppConstants.messi,
+              ),
             ),
             SizedBox(height: constraints.maxHeight * 0.05),
             SizedBox(

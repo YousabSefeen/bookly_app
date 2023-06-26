@@ -4,33 +4,32 @@ import 'package:equatable/equatable.dart';
 import '../../../data/models/home_model.dart';
 
 class AllBooksStates extends Equatable {
-  final List<HomeModel> newestBooks;
-  final String newestBooksErrorMessage;
-  final RequestState newestBooksState;
+  final List<HomeModel> allBooks;
+  final String allBooksErrorMessage;
+  final RequestState allBooksState;
 
   const AllBooksStates({
-    this.newestBooks = const [],
-    this.newestBooksState = RequestState.loading,
-    this.newestBooksErrorMessage = '',
+    this.allBooks = const [],
+    this.allBooksState = RequestState.loading,
+    this.allBooksErrorMessage = '',
   });
 
   AllBooksStates copyWith({
-    List<HomeModel>? newestBooks,
-    String? newestBooksErrorMessage,
-    RequestState? newestBooksState,
+    List<HomeModel>? allBooks,
+    String? allBooksErrorMessage,
+    RequestState? allBooksState,
   }) {
     return AllBooksStates(
-      newestBooks: newestBooks ?? this.newestBooks,
-      newestBooksState: newestBooksState ?? this.newestBooksState,
-      newestBooksErrorMessage:
-          newestBooksErrorMessage ?? this.newestBooksErrorMessage,
+      allBooks: allBooks ?? this.allBooks,
+      allBooksState: allBooksState ?? this.allBooksState,
+      allBooksErrorMessage: allBooksErrorMessage ?? this.allBooksErrorMessage,
     );
   }
 
   @override
   List<Object> get props => [
-        newestBooks,
-        newestBooksErrorMessage,
-        newestBooksState,
+        allBooks,
+        allBooksErrorMessage,
+        allBooksState,
       ];
 }

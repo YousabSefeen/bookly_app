@@ -4,6 +4,7 @@ import 'package:bookly/features/home/presentation/views/widgets/build_rating.dar
 import 'package:bookly/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/utils/app_constants.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 class SearchResultListView extends StatelessWidget {
@@ -30,7 +31,7 @@ class SearchResultListView extends StatelessWidget {
             children: [
               SizedBox(
                 width: deviceSize.width * 0.2,
-                child: const CustomImage(),
+                child: const CustomImage(imageUrl: AppConstants.messi),
               ),
               Expanded(
                 child: Padding(

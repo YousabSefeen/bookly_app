@@ -6,12 +6,12 @@ class VolumeInfoModel extends Equatable {
   final String title;
   final List<dynamic> authors;
 
-  final String publisher;
-  final String publishedDate;
-  final String description;
+  final String? publisher;
+  final String? publishedDate;
+  final String? description;
   final List<dynamic> categories;
-  final int? averageRating;
-  final ImageLinksModel? imageLinksModel;
+  final dynamic averageRating;
+  final ImageLinksModel imageLinksModel;
 
   const VolumeInfoModel({
     required this.title,
@@ -26,18 +26,14 @@ class VolumeInfoModel extends Equatable {
 
   factory VolumeInfoModel.fromJson(Map<String, dynamic> json) {
     return VolumeInfoModel(
-      title: json['title'],
-      authors: json['authors'],
-      publisher: json['publisher'],
-      publishedDate: json['publishedDate'],
-      description: json['description'],
-      categories: json['categories'],
-      averageRating: json['averageRating'],
-      imageLinksModel: json['imageLinks'] == null
-          ? null
-          : ImageLinksModel.fromJson(
-              json['imageLinks'] as Map<String, dynamic>),
-    );
+        title: json['title'],
+        authors: json['authors'],
+        publisher: json['publisher'],
+        publishedDate: json['publishedDate'],
+        description: json['description'],
+        categories: json['categories'],
+        averageRating: json['averageRating'],
+        imageLinksModel: ImageLinksModel.fromJson(json['imageLinks']));
   }
 
   @override

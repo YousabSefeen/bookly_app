@@ -8,7 +8,7 @@ class BuildRating extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
+    Size deviceSize = MediaQuery.sizeOf(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

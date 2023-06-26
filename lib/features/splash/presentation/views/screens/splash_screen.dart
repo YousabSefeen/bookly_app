@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   void navigatorToHome() {
     Future.delayed(
-      const Duration(seconds: 3),
+      const Duration(seconds: 2),
       () => AppRouters.goAndReplacement(
         context: context,
         route: HomeScreen.route,

@@ -12,16 +12,16 @@ class HomeRepository implements BaseHomeRepository {
   HomeRepository({required this.apiServices});
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<HomeModel>>> fetchAllBooks() async {
     try {
       final result =
-          await apiServices.getHomeData(endPoint: ApiConstants.newestBooks);
-      List<HomeModel> newestBooks = [];
+          await apiServices.getHomeData(endPoint: ApiConstants.allBooks);
+      List<HomeModel> allBooks = [];
 
       for (var books in result['items']) {
-        newestBooks.add(HomeModel.fromJson(books));
+        allBooks.add(HomeModel.fromJson(books));
       }
-      return Right(newestBooks);
+      return Right(allBooks);
     } catch (error) {
       if (error is DioException) {
         return Left(ServerFailure.fromDioError(error));
@@ -32,18 +32,16 @@ class HomeRepository implements BaseHomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks() async {
-
-
+  Future<Either<Failure, List<HomeModel>>> fetchFreeBooks() async {
     try {
       final result =
-      await apiServices.getHomeData(endPoint: ApiConstants.programmingBooks);
-      List<HomeModel> programmingBooks = [];
+          await apiServices.getHomeData(endPoint: ApiConstants.freeBooks);
+      List<HomeModel> freeBooks = [];
 
       for (var books in result['items']) {
-        programmingBooks.add(HomeModel.fromJson(books));
+        freeBooks.add(HomeModel.fromJson(books));
       }
-      return Right(programmingBooks);
+      return Right(freeBooks);
     } catch (error) {
       print('fitchProgrammingBooks');
       if (error is DioException) {

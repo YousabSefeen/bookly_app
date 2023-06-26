@@ -3,23 +3,23 @@ import 'package:equatable/equatable.dart';
 import '../../../../../core/enums/request_state.dart';
 import '../../../data/models/home_model.dart';
 
-class ProgrammingBooksStates extends Equatable {
+class FreeBooksStates extends Equatable {
   final List<HomeModel> programmingBooks;
   final String programmingBooksErrorMessage;
   final RequestState programmingBooksState;
 
-  const ProgrammingBooksStates({
+  const FreeBooksStates({
     this.programmingBooks = const [],
     this.programmingBooksState = RequestState.loading,
     this.programmingBooksErrorMessage = '',
   });
 
-  ProgrammingBooksStates copyWith({
+  FreeBooksStates copyWith({
     List<HomeModel>? programmingBooks,
     String? programmingBooksErrorMessage,
     RequestState? programmingBooksState,
   }) {
-    return ProgrammingBooksStates(
+    return FreeBooksStates(
       programmingBooks: programmingBooks ?? this.programmingBooks,
       programmingBooksState:
           programmingBooksState ?? this.programmingBooksState,

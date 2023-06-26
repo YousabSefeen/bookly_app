@@ -1,6 +1,5 @@
 import 'package:bookly/core/utils/app_constants.dart';
 import 'package:bookly/core/utils/service_locator.dart';
-import 'package:bookly/features/home/presentation/controller/programming%20books/programming_books_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'core/utils/app_routers.dart';
 import 'core/utils/bloc_observer.dart';
+import 'features/home/presentation/controller/all books/all_books_cubit.dart';
+import 'features/home/presentation/controller/free books/free_books_cubit.dart';
 import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
@@ -34,17 +35,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, _) => MultiBlocProvider(
         providers: [
-          // BlocProvider(
-          //   create: (context) => ProgrammingBooksCubit(
-          //     homeRepository: HomeRepository(
-          //       apiServices: ApiServices(Dio()),
-          //     ),
-          //   ),
-          // ),
-
           BlocProvider(
             create: (context) =>
-                getIt<ProgrammingBooksCubit>()..fetchProgrammingBooks(),
+                getIt<AllBooksCubit>()..fetchAllBooks(),
+          ),
+          BlocProvider(
+            create: (context) => getIt<FreeBooksCubit>()..fetchFreeBooks(),
           ),
         ],
         child: MaterialApp(

@@ -4,17 +4,17 @@ import 'package:bookly/core/enums/request_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/repository/home_repository.dart';
-import 'programming_books_state.dart';
+import 'free_books_state.dart';
 
-class ProgrammingBooksCubit extends Cubit<ProgrammingBooksStates> {
+class FreeBooksCubit extends Cubit<FreeBooksStates> {
   final HomeRepository homeRepository;
 
-  ProgrammingBooksCubit({
+  FreeBooksCubit({
     required this.homeRepository,
-  }) : super(const ProgrammingBooksStates());
+  }) : super(const FreeBooksStates());
 
-  FutureOr<void> fetchProgrammingBooks() async {
-    final result = await homeRepository.fetchProgrammingBooks();
+  FutureOr<void> fetchFreeBooks() async {
+    final result = await homeRepository.fetchFreeBooks();
     result.fold(
       (failure) => emit(
         state.copyWith(

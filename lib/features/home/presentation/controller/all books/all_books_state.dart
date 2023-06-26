@@ -3,23 +3,23 @@ import 'package:equatable/equatable.dart';
 
 import '../../../data/models/home_model.dart';
 
-class NewestBooksStates extends Equatable {
+class AllBooksStates extends Equatable {
   final List<HomeModel> newestBooks;
   final String newestBooksErrorMessage;
   final RequestState newestBooksState;
 
-  const NewestBooksStates({
+  const AllBooksStates({
     this.newestBooks = const [],
     this.newestBooksState = RequestState.loading,
     this.newestBooksErrorMessage = '',
   });
 
-  NewestBooksStates copyWith({
+  AllBooksStates copyWith({
     List<HomeModel>? newestBooks,
     String? newestBooksErrorMessage,
     RequestState? newestBooksState,
   }) {
-    return NewestBooksStates(
+    return AllBooksStates(
       newestBooks: newestBooks ?? this.newestBooks,
       newestBooksState: newestBooksState ?? this.newestBooksState,
       newestBooksErrorMessage:

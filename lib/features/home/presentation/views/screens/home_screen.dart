@@ -2,7 +2,7 @@ import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dar
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_styles.dart';
-import '../widgets/best_seller_list_view.dart';
+import '../widgets/free_books_list_view.dart';
 import '../widgets/home_images_list_view.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                   HomeAppBar(),
                   HomeImagesListView(),
                   SizedBox(height: 49),
-                  Text('Best Seller', style: AppStyles.textStyle18),
+                  Text('Free Programming Books', style: AppStyles.textStyle18),
                 ],
               ),
             ),

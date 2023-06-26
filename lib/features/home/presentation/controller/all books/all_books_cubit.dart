@@ -4,16 +4,15 @@ import 'package:bookly/core/enums/request_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/repository/home_repository.dart';
-import 'home_state.dart';
+import 'all_books_state.dart';
 
-class NewestBooksCubit extends Cubit<NewestBooksStates> {
+class AllBooksCubit extends Cubit<AllBooksStates> {
   final HomeRepository homeRepository;
 
-  NewestBooksCubit({required this.homeRepository})
-      : super(const NewestBooksStates());
+  AllBooksCubit({required this.homeRepository}) : super(const AllBooksStates());
 
-  FutureOr<void> fitchNewestBooks() async {
-    final result = await homeRepository.fetchNewestBooks();
+  FutureOr<void> fetchAllBooks() async {
+    final result = await homeRepository.fetchAllBooks();
 
     result.fold(
       (failure) => emit(state.copyWith(

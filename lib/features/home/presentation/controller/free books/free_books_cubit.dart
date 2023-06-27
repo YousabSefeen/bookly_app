@@ -18,14 +18,14 @@ class FreeBooksCubit extends Cubit<FreeBooksStates> {
     result.fold(
       (failure) => emit(
         state.copyWith(
-          programmingBooksState: RequestState.failure,
-          programmingBooksErrorMessage: failure.errorMessage,
+          freeBooksState: RequestState.failure,
+          freeBooksErrorMessage: failure.errorMessage,
         ),
       ),
-      (programmingBooks) => emit(
+      (freeBooks) => emit(
         state.copyWith(
-          programmingBooksState: RequestState.loaded,
-          programmingBooks: programmingBooks,
+          freeBooksState: RequestState.loaded,
+          freeBooks: freeBooks,
         ),
       ),
     );

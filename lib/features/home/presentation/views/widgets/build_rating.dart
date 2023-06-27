@@ -4,13 +4,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 class BuildRating extends StatelessWidget {
-  const BuildRating({Key? key}) : super(key: key);
+  final num rating;
+  final num ratingsCount;
+
+  const BuildRating(
+      {required this.rating, required this.ratingsCount, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.sizeOf(context);
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Icon(
           FontAwesomeIcons.solidStar,
@@ -22,14 +27,14 @@ class BuildRating extends StatelessWidget {
             left: deviceSize.width * 0.02,
             right: deviceSize.width * 0.009,
           ),
-          child: const Text(
-            '4.8',
+          child: Text(
+            ratingsCount.toString(),
             style: AppStyles.textStyle16,
           ),
         ),
         SizedBox(width: deviceSize.width * 0.009),
         Text(
-          '(2390)',
+          '( $rating )',
           style: AppStyles.textStyle14.copyWith(
             color: Colors.white.withOpacity(0.5),
             fontWeight: FontWeight.w600,

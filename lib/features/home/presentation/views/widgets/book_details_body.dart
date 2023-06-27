@@ -48,7 +48,10 @@ class BookDetailsBody extends StatelessWidget {
             SizedBox(height: constraints.maxHeight * 0.02),
             SizedBox(
               height: constraints.maxHeight * 0.04,
-              child: const BuildRating(),
+              child: BuildRating(
+                rating: 5,
+                ratingsCount: 10,
+              ),
             ),
             SizedBox(height: constraints.maxHeight * 0.05),
             SizedBox(

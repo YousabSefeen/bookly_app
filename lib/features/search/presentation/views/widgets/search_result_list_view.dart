@@ -78,7 +78,10 @@ class SearchResultListView extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            const BuildRating(),
+                            const BuildRating(
+                              rating: 5,
+                              ratingsCount: 10,
+                            ),
                           ],
                         ),
                       )

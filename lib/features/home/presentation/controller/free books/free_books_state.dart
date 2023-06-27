@@ -4,34 +4,33 @@ import '../../../../../core/enums/request_state.dart';
 import '../../../data/models/home_model.dart';
 
 class FreeBooksStates extends Equatable {
-  final List<HomeModel> programmingBooks;
-  final String programmingBooksErrorMessage;
-  final RequestState programmingBooksState;
+  final List<HomeModel> freeBooks;
+  final String freeBooksErrorMessage;
+  final RequestState freeBooksState;
 
   const FreeBooksStates({
-    this.programmingBooks = const [],
-    this.programmingBooksState = RequestState.loading,
-    this.programmingBooksErrorMessage = '',
+    this.freeBooks = const [],
+    this.freeBooksState = RequestState.loading,
+    this.freeBooksErrorMessage = '',
   });
 
   FreeBooksStates copyWith({
-    List<HomeModel>? programmingBooks,
-    String? programmingBooksErrorMessage,
-    RequestState? programmingBooksState,
+    List<HomeModel>? freeBooks,
+    String? freeBooksErrorMessage,
+    RequestState? freeBooksState,
   }) {
     return FreeBooksStates(
-      programmingBooks: programmingBooks ?? this.programmingBooks,
-      programmingBooksState:
-          programmingBooksState ?? this.programmingBooksState,
-      programmingBooksErrorMessage:
-          programmingBooksErrorMessage ?? this.programmingBooksErrorMessage,
+      freeBooks: freeBooks ?? this.freeBooks,
+      freeBooksState: freeBooksState ?? this.freeBooksState,
+      freeBooksErrorMessage:
+          freeBooksErrorMessage ?? this.freeBooksErrorMessage,
     );
   }
 
   @override
   List<Object> get props => [
-        programmingBooks,
-        programmingBooksErrorMessage,
-        programmingBooksState,
+        freeBooks,
+        freeBooksErrorMessage,
+        freeBooksState,
       ];
 }

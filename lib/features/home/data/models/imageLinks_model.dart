@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class ImageLinksModel extends Equatable {
-  final String smallThumbnail;
-  final String thumbnail;
+  final String? smallThumbnail;
+  final String? thumbnail;
 
   const ImageLinksModel({
     required this.smallThumbnail,
@@ -17,7 +17,7 @@ class ImageLinksModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         smallThumbnail,
         thumbnail,
       ];

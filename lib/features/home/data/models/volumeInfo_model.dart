@@ -11,7 +11,8 @@ class VolumeInfoModel extends Equatable {
   final String? description;
   final List<dynamic> categories;
   final dynamic averageRating;
-  final ImageLinksModel imageLinksModel;
+  final dynamic ratingsCount;
+  final ImageLinksModel? imageLinksModel;
 
   const VolumeInfoModel({
     required this.title,
@@ -21,6 +22,7 @@ class VolumeInfoModel extends Equatable {
     required this.description,
     required this.categories,
     required this.averageRating,
+    required this.ratingsCount,
     required this.imageLinksModel,
   });
 
@@ -33,7 +35,10 @@ class VolumeInfoModel extends Equatable {
         description: json['description'],
         categories: json['categories'],
         averageRating: json['averageRating'],
-        imageLinksModel: ImageLinksModel.fromJson(json['imageLinks']));
+        ratingsCount: json['ratingsCount'],
+        imageLinksModel: json['imageLinks'] == null
+            ? null
+            : ImageLinksModel.fromJson(json['imageLinks']));
   }
 
   @override
@@ -45,6 +50,7 @@ class VolumeInfoModel extends Equatable {
         description,
         categories,
         averageRating,
+        ratingsCount,
         imageLinksModel,
       ];
 }

@@ -19,7 +19,7 @@ class CustomImage extends StatelessWidget {
           height: double.infinity,
           fit: BoxFit.fill,
           imageUrl: imageUrl,
-          placeholder: (context, _) =>const Center(
+          placeholder: (context, _) => const Center(
             child: Text(
               'Loading...',
               style: AppStyles.textStyle16,

@@ -7,10 +7,15 @@ abstract class Failure {
 }
 
 class ServerFailure extends Failure {
-  ServerFailure(super.errorMessage);
+  ServerFailure(
+    super.errorMessage,
+  );
 
-  factory ServerFailure.fromDioError(DioException dioException) {
-    switch (dioException.type) {
+  factory ServerFailure.fromDioError({
+    required DioException error,
+    required String onSocketException,
+  }) {
+    switch (error.type) {
       case DioExceptionType.connectionTimeout:
         return ServerFailure('Connection timeout with ApiServer.');
       case DioExceptionType.sendTimeout:
@@ -21,13 +26,18 @@ class ServerFailure extends Failure {
         return ServerFailure('Bad Certificate.');
       case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioException.response!.statusCode, dioException.response!.data);
+            error.response!.statusCode, error.response!.data);
       case DioExceptionType.cancel:
         return ServerFailure('Request to ApiServer was canceled');
       case DioExceptionType.connectionError:
         return ServerFailure('No internet connection');
       case DioExceptionType.unknown:
-        return ServerFailure('An unknown error occurred');
+        if (onSocketException!.contains('SocketException')) {
+          return ServerFailure(' RRRRRRRRR   Socket Exception');
+        } else {
+          return ServerFailure('DioExceptionType.unknown');
+        }
+
       default:
         return ServerFailure('Opps there was an error,Please try again');
     }

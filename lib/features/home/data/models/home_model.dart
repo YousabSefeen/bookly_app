@@ -1,5 +1,5 @@
 import 'package:bookly/features/home/data/models/sale_info_model.dart';
-import 'package:bookly/features/home/data/models/volumeInfo_model.dart';
+import 'package:bookly/features/home/data/models/volume_info_model.dart';
 import 'package:equatable/equatable.dart';
 
 class HomeModel extends Equatable {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_routers.dart';
 import '../../../../../core/utils/app_styles.dart';
-import '../../../data/models/volumeInfo_model.dart';
+import '../../../data/models/volume_info_model.dart';
 import '../screens/book_details_screen.dart';
 import 'build_rating.dart';
 import 'custom_image.dart';

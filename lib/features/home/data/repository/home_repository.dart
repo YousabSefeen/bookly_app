@@ -22,8 +22,7 @@ class HomeRepository implements BaseHomeRepository {
     } catch (error) {
       if (error is DioException) {
         return Left(
-          ServerFailure.fromDioError(
-              error: error, onSocketException: error.message!),
+          ServerFailure.fromDioError(error: error),
         );
       } else {
         return Left(ServerFailure(error.toString()));
@@ -39,20 +38,13 @@ class HomeRepository implements BaseHomeRepository {
       List<HomeModel> freeBooks = [];
 
       for (var books in result.data['items']) {
-        try {
-          freeBooks.add(HomeModel.fromJson(books));
-        } catch (_) {
-          freeBooks.add(HomeModel.fromJson(books));
-        }
+        freeBooks.add(HomeModel.fromJson(books));
       }
       return Right(freeBooks);
     } catch (error) {
       if (error is DioException) {
         return Left(
-          ServerFailure.fromDioError(
-            error: error,
-            onSocketException: error.message!,
-          ),
+          ServerFailure.fromDioError(error: error),
         );
       } else {
         return Left(ServerFailure(error.toString()));

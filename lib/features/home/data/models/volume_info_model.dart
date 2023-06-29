@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import 'imageLinks_model.dart';
+import 'image_links_model.dart';
 
 class VolumeInfoModel extends Equatable {
   final String title;

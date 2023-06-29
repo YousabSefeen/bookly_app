@@ -13,7 +13,6 @@ class ServerFailure extends Failure {
 
   factory ServerFailure.fromDioError({
     required DioException error,
-    required String onSocketException,
   }) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
@@ -32,11 +31,7 @@ class ServerFailure extends Failure {
       case DioExceptionType.connectionError:
         return ServerFailure('No internet connection');
       case DioExceptionType.unknown:
-        if (onSocketException!.contains('SocketException')) {
-          return ServerFailure(' RRRRRRRRR   Socket Exception');
-        } else {
-          return ServerFailure('DioExceptionType.unknown');
-        }
+        return ServerFailure('An error occurred,Please try again');
 
       default:
         return ServerFailure('Opps there was an error,Please try again');

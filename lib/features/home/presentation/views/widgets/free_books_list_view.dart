@@ -13,7 +13,7 @@ class FreeBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.sizeOf(context);
+
 
     return BlocBuilder<FreeBooksCubit, FreeBooksStates>(
       buildWhen: (previous, current) =>

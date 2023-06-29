@@ -1,5 +1,6 @@
 import 'package:bookly/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   final String errorMessage;
@@ -10,13 +11,33 @@ class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Padding(
+      child: Container(
         padding: const EdgeInsets.all(25),
-        child: Text(
-          errorMessage,
-          style: AppStyles.textStyle18.copyWith(
-            color: Colors.red,
-          ),
+        margin: const EdgeInsets.all(25),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.white70
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(
+              FontAwesomeIcons.circleExclamation,
+              size: 30,
+              color: Colors.red,
+            ),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                errorMessage,
+
+                style: AppStyles.textStyle18.copyWith(
+                        color: Colors.black,
+                  fontWeight: FontWeight.w900,
+                    ),
+              ),
+            ),
+          ],
         ),
       ),
     );

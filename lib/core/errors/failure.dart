@@ -11,7 +11,7 @@ class ServerFailure extends Failure {
     super.errorMessage,
   );
 
-  factory ServerFailure.fromDioError({
+  factory ServerFailure.fromDioException({
     required DioException error,
   }) {
     switch (error.type) {

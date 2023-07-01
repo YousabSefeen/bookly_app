@@ -1,8 +1,9 @@
 import 'package:bookly/features/home/data/repository/home_repository.dart';
+import 'package:bookly/features/home/presentation/controller/similar_book_details/similar_books_cubit.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../features/home/presentation/controller/all books/all_books_cubit.dart';
-import '../../features/home/presentation/controller/free books/free_books_cubit.dart';
+import '../../features/home/presentation/controller/all books/computer_books_cubit.dart';
+import '../../features/home/presentation/controller/programming books/programming_books_cubit.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -11,13 +12,15 @@ class ServiceLocator {
     getIt.registerLazySingleton(
       () => const HomeRepository(),
     );
-
     getIt.registerFactory(
-      () => AllBooksCubit(homeRepository: getIt()),
+      () => ProgrammingBooksCubit(homeRepository: getIt()),
+    );
+    getIt.registerFactory(
+      () => ComputerBooksCubit(homeRepository: getIt()),
     );
 
     getIt.registerFactory(
-      () => FreeBooksCubit(homeRepository: getIt()),
+      () => SimilarBookCubit(homeRepository: getIt()),
     );
   }
 }

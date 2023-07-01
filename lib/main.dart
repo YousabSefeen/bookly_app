@@ -8,8 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'core/utils/app_routers.dart';
 import 'core/utils/bloc_observer.dart';
-import 'features/home/presentation/controller/all books/all_books_cubit.dart';
-import 'features/home/presentation/controller/free books/free_books_cubit.dart';
+import 'features/home/presentation/controller/all books/computer_books_cubit.dart';
+
+import 'features/home/presentation/controller/programming books/programming_books_cubit.dart';
 import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
@@ -37,10 +38,10 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                getIt<AllBooksCubit>()..fetchAllBooks(),
+                getIt<ComputerBooksCubit>()..fetchAllBooks(),
           ),
           BlocProvider(
-            create: (context) => getIt<FreeBooksCubit>()..fetchFreeBooks(),
+            create: (context) => getIt<ProgrammingBooksCubit>()..fetchProgrammingBooks(),
           ),
         ],
         child: MaterialApp(

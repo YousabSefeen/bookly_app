@@ -15,9 +15,7 @@ class CustomErrorWidget extends StatelessWidget {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.all(25),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.white70
-        ),
+            borderRadius: BorderRadius.circular(20), color: Colors.white70),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,11 +28,10 @@ class CustomErrorWidget extends StatelessWidget {
             Expanded(
               child: Text(
                 errorMessage,
-
                 style: AppStyles.textStyle18.copyWith(
-                        color: Colors.black,
+                  color: Colors.black,
                   fontWeight: FontWeight.w900,
-                    ),
+                ),
               ),
             ),
           ],

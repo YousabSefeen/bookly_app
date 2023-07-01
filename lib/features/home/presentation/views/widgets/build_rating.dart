@@ -16,6 +16,7 @@ class BuildRating extends StatelessWidget {
     Size deviceSize = MediaQuery.sizeOf(context);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(
           FontAwesomeIcons.solidStar,

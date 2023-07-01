@@ -1,17 +1,17 @@
-import 'package:bookly/core/utils/app_constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_routers.dart';
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/widgets/no_image_available.dart';
 import '../../../data/models/volume_info_model.dart';
 import '../screens/book_details_screen.dart';
 import 'build_rating.dart';
 import 'custom_image.dart';
 
-class FreeBookItem extends StatelessWidget {
+class BookItem extends StatelessWidget {
   final VolumeInfoModel book;
 
-  const FreeBookItem({required this.book, Key? key}) : super(key: key);
+  const BookItem({required this.book, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +21,7 @@ class FreeBookItem extends StatelessWidget {
         AppRouters.go(
           context: context,
           route: BookDetailsScreen.route,
+          arguments: book,
         );
       },
       child: Padding(
@@ -29,9 +30,9 @@ class FreeBookItem extends StatelessWidget {
           children: [
             SizedBox(
               width: deviceSize.width * 0.2,
-              child: CustomImage(
-                  imageUrl:
-                      book.imageLinksModel?.thumbnail ?? AppConstants.messi),
+              child: book.imageLinksModel?.thumbnail == null
+                  ? const NoImageAvailable(heightText: 1.5)
+                  : CustomImage(imageUrl: book.imageLinksModel!.thumbnail),
             ),
             Expanded(
               child: Padding(
@@ -53,7 +54,7 @@ class FreeBookItem extends StatelessWidget {
                     ),
                     SizedBox(height: deviceSize.height * 0.01),
                     Text(
-                      book.authors[0],
+                      book.authors![0],
                       style: AppStyles.textStyle14.copyWith(
                         fontWeight: FontWeight.w500,
                         color: Colors.white.withOpacity(0.7),

@@ -9,6 +9,7 @@ class VolumeInfoModel extends Equatable {
   final String? publisher;
   final String? publishedDate;
   final String? description;
+  final String previewLink;
   final List<String>? categories;
   final dynamic averageRating;
   final dynamic ratingsCount;
@@ -20,6 +21,7 @@ class VolumeInfoModel extends Equatable {
     required this.publisher,
     required this.publishedDate,
     required this.description,
+    required this.previewLink,
     required this.categories,
     required this.averageRating,
     required this.ratingsCount,
@@ -33,6 +35,7 @@ class VolumeInfoModel extends Equatable {
       publisher: json['publisher'],
       publishedDate: json['publishedDate'],
       description: json['description'],
+      previewLink: json['previewLink'],
       categories: (json['categories'] as List<dynamic>?)?.cast<String>(),
       averageRating: json['averageRating'],
       ratingsCount: json['ratingsCount'],
@@ -50,6 +53,7 @@ class VolumeInfoModel extends Equatable {
         publisher,
         publishedDate,
         description,
+        previewLink,
         categories,
         averageRating,
         ratingsCount,

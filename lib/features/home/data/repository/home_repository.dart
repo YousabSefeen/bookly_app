@@ -9,16 +9,16 @@ class HomeRepository implements BaseHomeRepository {
   const HomeRepository();
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fetchComputerBooks() async {
+  Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks() async {
     try {
       final response = await Dio(BaseOptions(baseUrl: ApiConstants.baseUrl))
-          .get(ApiConstants.computerBooks);
-      List<HomeModel> allBooks = [];
+          .get(ApiConstants.programmingBooks);
+      List<HomeModel> freeBooks = [];
 
       for (var books in response.data['items']) {
-        allBooks.add(HomeModel.fromJson(books));
+        freeBooks.add(HomeModel.fromJson(books));
       }
-      return Right(allBooks);
+      return Right(freeBooks);
     } catch (error) {
       if (error is DioException) {
         return Left(
@@ -31,16 +31,16 @@ class HomeRepository implements BaseHomeRepository {
   }
 
   @override
-  Future<Either<Failure, List<HomeModel>>> fetchProgrammingBooks() async {
+  Future<Either<Failure, List<HomeModel>>> fetchComputerBooks() async {
     try {
       final response = await Dio(BaseOptions(baseUrl: ApiConstants.baseUrl))
-          .get(ApiConstants.programmingBooks);
-      List<HomeModel> freeBooks = [];
+          .get(ApiConstants.computerBooks);
+      List<HomeModel> allBooks = [];
 
       for (var books in response.data['items']) {
-        freeBooks.add(HomeModel.fromJson(books));
+        allBooks.add(HomeModel.fromJson(books));
       }
-      return Right(freeBooks);
+      return Right(allBooks);
     } catch (error) {
       if (error is DioException) {
         return Left(

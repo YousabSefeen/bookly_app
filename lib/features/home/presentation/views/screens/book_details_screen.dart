@@ -1,10 +1,10 @@
 import 'package:bookly/core/widgets/no_image_available.dart';
+import 'package:bookly/features/home/data/models/home_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/app_routers.dart';
 import '../../../../../core/utils/app_styles.dart';
-import '../../../data/models/volume_info_model.dart';
 import '../widgets/book_details_actions.dart';
 import '../widgets/build_rating.dart';
 import '../widgets/custom_image.dart';
@@ -18,7 +18,9 @@ class BookDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.sizeOf(context);
-    final book = ModalRoute.of(context)!.settings.arguments as VolumeInfoModel;
+    final homeModel = ModalRoute.of(context)!.settings.arguments as HomeModel;
+    final book = homeModel.volumeInfoModel;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -77,11 +79,14 @@ class BookDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   BuildRating(
-                    rating: book.ratingsCount ?? 0,
                     ratingsCount: book.averageRating ?? 0,
+                    rating: book.ratingsCount ?? 0,
                   ),
                   const SizedBox(height: 27),
-                  const BookDetailsActions(),
+                  BookDetailsActions(
+                    previewLink: book.previewLink,
+                    saleability: homeModel.saleInfoModel!.saleability,
+                  ),
                   const SizedBox(height: 20),
                   Align(
                     alignment: Alignment.centerLeft,

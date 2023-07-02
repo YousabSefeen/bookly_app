@@ -37,7 +37,7 @@ class ProgrammingBooksImagesListView extends StatelessWidget {
                     AppRouters.go(
                       context: context,
                       route: BookDetailsScreen.route,
-                      arguments: state.programmingBooks[index].volumeInfoModel,
+                      arguments: state.programmingBooks[index],
                     );
                   },
                   child: Padding(

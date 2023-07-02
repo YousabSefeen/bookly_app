@@ -29,17 +29,17 @@ class BuildRating extends StatelessWidget {
             right: deviceSize.width * 0.009,
           ),
           child: Text(
-            ratingsCount.toString(),
-            style: AppStyles.textStyle16,
+            '( $rating )',
+            style: AppStyles.textStyle14.copyWith(
+              color: Colors.white.withOpacity(0.5),
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
         SizedBox(width: deviceSize.width * 0.009),
         Text(
-          '( $rating )',
-          style: AppStyles.textStyle14.copyWith(
-            color: Colors.white.withOpacity(0.5),
-            fontWeight: FontWeight.w600,
-          ),
+          ratingsCount.toString(),
+          style: AppStyles.textStyle16,
         ),
       ],
     );

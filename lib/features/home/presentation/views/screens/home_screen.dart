@@ -1,7 +1,8 @@
 import 'package:bookly/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/utils/app_styles.dart';import '../widgets/computer_books_list_view.dart';
+import '../../../../../core/utils/app_styles.dart';
+import '../widgets/computer_books_list_view.dart';
 import '../widgets/programming_books_images_list_view.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -28,7 +28,7 @@ class ComputerBooksListView extends StatelessWidget {
               itemCount: state.computerBooks.length,
               itemBuilder: (BuildContext context, int index) {
                 return BookItem(
-                  book: state.computerBooks[index].volumeInfoModel,
+                  homeModel: state.computerBooks[index],
                 );
               },
             );

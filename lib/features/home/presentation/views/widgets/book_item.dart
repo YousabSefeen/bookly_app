@@ -3,25 +3,27 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_routers.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/no_image_available.dart';
-import '../../../data/models/volume_info_model.dart';
+import '../../../data/models/home_model.dart';
 import '../screens/book_details_screen.dart';
 import 'build_rating.dart';
 import 'custom_image.dart';
 
 class BookItem extends StatelessWidget {
-  final VolumeInfoModel book;
+  final HomeModel homeModel;
 
-  const BookItem({required this.book, Key? key}) : super(key: key);
+  const BookItem({required this.homeModel, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size deviceSize = MediaQuery.sizeOf(context);
+
+    final book = homeModel.volumeInfoModel;
     return GestureDetector(
       onTap: () {
         AppRouters.go(
           context: context,
           route: BookDetailsScreen.route,
-          arguments: book,
+          arguments: homeModel,
         );
       },
       child: Padding(

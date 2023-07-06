@@ -1,37 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppStyles {
   static const kGTSectraFine = 'GT Sectra Fine';
-  static const textStyle18 = TextStyle(
-    fontSize: 18,
+  static TextStyle textStyle17 = TextStyle(
+    fontSize: 17.sp,
     fontWeight: FontWeight.w600,
     color: Colors.white,
   );
-  static const TextStyle textStyle14 = TextStyle(
-      fontSize: 14,
+  static TextStyle textStyle13 = TextStyle(
+      fontSize: 13.sp,
       fontWeight: FontWeight.w400, //regular
       color: Colors.white);
-  static const textStyle15 = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w700, //regular
-  );
-  static const textStyle16 = TextStyle(
-    fontSize: 16,
+
+  static TextStyle textStyle15 = TextStyle(
+    fontSize: 15.sp,
 
     fontWeight: FontWeight.w500, //Medium
   );
-  static const textStyle20a = TextStyle(
-    fontSize: 20,
+  static TextStyle textStyle18a = TextStyle(
+    fontSize: 18.sp,
     fontWeight: FontWeight.w400,
     fontFamily: kGTSectraFine,
   );
-  static const textStyle20b = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w700,
-    //fontFamily  by default
-  );
-  static const textStyle30 = TextStyle(
-    fontSize: 30,
+
+  static TextStyle textStyle30 = TextStyle(
+    fontSize: 28.sp,
     fontWeight: FontWeight.w400,
     fontFamily: kGTSectraFine,
   );

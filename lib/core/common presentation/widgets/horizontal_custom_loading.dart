@@ -1,8 +1,9 @@
-import 'package:bookly/core/widgets/custom_shimmer_widget.dart';
 import 'package:flutter/material.dart';
 
-class CustomLoadingAllBooks extends StatelessWidget {
-  const CustomLoadingAllBooks({Key? key}) : super(key: key);
+import 'custom_shimmer_widget.dart';
+
+class HorizontalCustomLoading extends StatelessWidget {
+  const HorizontalCustomLoading({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

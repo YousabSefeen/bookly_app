@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 import '../../../../../core/enums/request_state.dart';
-import '../../../data/models/home_model.dart';
+import '../../../../../core/models/home_model.dart';
 
 class ProgrammingBooksStates extends Equatable {
   final List<HomeModel> programmingBooks;

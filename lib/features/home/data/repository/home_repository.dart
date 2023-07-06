@@ -1,9 +1,10 @@
 import 'package:bookly/core/errors/failure.dart';
 import 'package:bookly/core/utils/api_constants.dart';
-import 'package:bookly/features/home/data/models/home_model.dart';
 import 'package:bookly/features/home/data/repository/base_home_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+
+import '../../../../core/models/home_model.dart';
 
 class HomeRepository implements BaseHomeRepository {
   const HomeRepository();
@@ -56,13 +57,12 @@ class HomeRepository implements BaseHomeRepository {
   Future<Either<Failure, List<HomeModel>>> fetchSimilarBooks({
     required String category,
   }) async {
-    final response = await Dio(
-      BaseOptions(baseUrl: ApiConstants.baseUrl),
-    ).get(ApiConstants.getSimilar(category));
-
-    List<HomeModel> similarBooks = [];
-
     try {
+      final response = await Dio(
+        BaseOptions(baseUrl: ApiConstants.baseUrl),
+      ).get(ApiConstants.getSimilar(category));
+
+      List<HomeModel> similarBooks = [];
       for (var book in response.data['items']) {
         try {
           similarBooks.add(HomeModel.fromJson(book));

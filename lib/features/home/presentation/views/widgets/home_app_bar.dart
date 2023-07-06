@@ -1,8 +1,9 @@
-import 'package:bookly/core/utils/app_assets.dart';
 import 'package:bookly/core/utils/app_routers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../../../../core/utils/app_constants.dart';
 import '../../../../search/presentation/views/screens/search_screen.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -10,23 +11,24 @@ class HomeAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
+    Size deviceSize = MediaQuery.sizeOf(context);
+
     return Padding(
-      padding: const EdgeInsets.only(top: 48),
+      padding: EdgeInsets.only(top: 5.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Image.asset(
-            AppAssets.kLogo,
+            AppConstants.kLogo,
             width: deviceSize.width * 0.25,
-            height: deviceSize.height * 0.12,
+            height: deviceSize.height * 0.1,
           ),
           IconButton(
             onPressed: () =>
                 AppRouters.go(context: context, route: SearchScreen.route),
             icon: Icon(
               FontAwesomeIcons.magnifyingGlass,
-              size: deviceSize.width * 0.06,
+              size: 22.sp,
             ),
           ),
         ],

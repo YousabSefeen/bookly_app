@@ -42,7 +42,7 @@ class CustomField extends StatelessWidget {
             ),
           ),
         ),
-        style: AppStyles.textStyle18,
+        style: AppStyles.textStyle17,
         validator: validator,
         onFieldSubmitted: onFieldSubmitted,
       ),

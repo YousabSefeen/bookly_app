@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/app_styles.dart';
+import '../../utils/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
   final BorderRadiusGeometry borderRadius;
@@ -23,7 +24,7 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 48,
+      height: 46.h,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
@@ -34,7 +35,7 @@ class CustomButton extends StatelessWidget {
             ),
             backgroundColor: MaterialStateProperty.all(backgroundColor)),
         child: Text(text,
-            style: AppStyles.textStyle18.copyWith(
+            style: AppStyles.textStyle17.copyWith(
               fontWeight: FontWeight.w900,
               color: textColor,
               fontSize: fontSize,

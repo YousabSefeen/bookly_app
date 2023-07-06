@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../utils/app_styles.dart';
+import '../../utils/app_styles.dart';
 
 class NoImageAvailable extends StatelessWidget {
   final double? letterSpacing;
@@ -12,7 +13,7 @@ class NoImageAvailable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2.3 / 3.5,
+      aspectRatio: 2.5.w / 3.3.h,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
@@ -22,9 +23,11 @@ class NoImageAvailable extends StatelessWidget {
           alignment: Alignment.center,
           child: Text(
             'Image\n Not Available',
-            style: AppStyles.textStyle15
+            style: AppStyles.textStyle13
                 .copyWith(height: heightText, letterSpacing: letterSpacing),
             textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 3,
           ),
         ),
       ),

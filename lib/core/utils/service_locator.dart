@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/home/presentation/controller/all books/computer_books_cubit.dart';
 import '../../features/home/presentation/controller/programming books/programming_books_cubit.dart';
+import '../../features/search/data/search_repository.dart';
+import '../../features/search/presentation/controller/search_cubit.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -12,6 +14,7 @@ class ServiceLocator {
     getIt.registerLazySingleton(
       () => const HomeRepository(),
     );
+
     getIt.registerFactory(
       () => ProgrammingBooksCubit(homeRepository: getIt()),
     );
@@ -21,6 +24,14 @@ class ServiceLocator {
 
     getIt.registerFactory(
       () => SimilarBookCubit(homeRepository: getIt()),
+    );
+
+    getIt.registerLazySingleton(
+      () => SearchRepository(),
+    );
+
+    getIt.registerFactory(
+      () => SearchCubit(searchRepository: getIt()),
     );
   }
 }

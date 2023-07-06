@@ -7,4 +7,7 @@ class ApiConstants {
 
   static String getSimilar(String category) =>
       'volumes?Sorting=relevance &q=subject:$category';
+
+  static String search(String textSearch) =>
+      'volumes?Sorting=relevance &q=subject:$textSearch';
 }

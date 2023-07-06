@@ -12,7 +12,7 @@ class ComputerBooksCubit extends Cubit<ComputerBooksStates> {
   ComputerBooksCubit({required this.homeRepository})
       : super(const ComputerBooksStates());
 
-  FutureOr<void> fetchAllBooks() async {
+  FutureOr<void> fetchComputerBooks() async {
     final result = await homeRepository.fetchComputerBooks();
 
     result.fold(
@@ -20,8 +20,8 @@ class ComputerBooksCubit extends Cubit<ComputerBooksStates> {
         computerBooksState: RequestState.failure,
         computerBooksErrorMessage: failure.errorMessage,
       )),
-      (allBooks) => emit(state.copyWith(
-        computerBooks: allBooks,
+      (computerBooks) => emit(state.copyWith(
+        computerBooks: computerBooks,
         computerBooksState: RequestState.loaded,
       )),
     );

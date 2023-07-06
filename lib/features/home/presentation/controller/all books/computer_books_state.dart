@@ -1,7 +1,7 @@
 import 'package:bookly/core/enums/request_state.dart';
 import 'package:equatable/equatable.dart';
 
-import '../../../data/models/home_model.dart';
+import '../../../../../core/models/home_model.dart';
 
 class ComputerBooksStates extends Equatable {
   final List<HomeModel> computerBooks;

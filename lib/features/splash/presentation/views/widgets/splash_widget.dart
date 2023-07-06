@@ -1,6 +1,7 @@
+import 'package:bookly/core/utils/app_constants.dart';
+import 'package:bookly/core/utils/app_styles.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/app_assets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SplashWidget extends StatelessWidget {
   final Animation<Offset> slidingImage;
@@ -22,21 +23,29 @@ class SplashWidget extends StatelessWidget {
           animation: slidingImage,
           builder: (context, _) => SlideTransition(
             position: slidingImage,
-            child: Image.asset(
-              AppAssets.kLogo,
-              width: 500,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.w),
+              child: AspectRatio(
+                aspectRatio: 2.w / 0.5.h,
+                child: Image.asset(
+                  AppConstants.kLogo,
+                  fit: BoxFit.fill,
+                ),
+              ),
             ),
           ),
         ),
-        const SizedBox(height: 5),
+        SizedBox(height: 15.h),
         AnimatedBuilder(
           animation: slidingText,
           builder: (context, _) => SlideTransition(
             position: slidingText,
-            child: const Text(
+            child: Text(
               'Read Free Books',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+              style: AppStyles.textStyle17.copyWith(
+                letterSpacing: 2,
+              ),
             ),
           ),
         ),

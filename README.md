@@ -1,16 +1,27 @@
-# bookly
+# Books App
 
-A new Flutter project.
+Book App made in Flutter using Google Books Api. Search your Favourite books here or buy them.
 
-## Getting Started
+Google Api Documentations. [Click Here](https://developers.google.com/books/docs/v1/using)
 
-This project is a starting point for a Flutter application.
+## Feature and Stuff
 
-A few resources to get you started if this is your first Flutter project:
+- Bloc as a state management\
+- implement a MVVM design pattern\
+- Handling errors, whether from the ApiServer or the incoming data and check Internet connection\
+- Responsive design/
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  ( dio , flutter_bloc , get_it , equatable , dartz, cached_network_image , shimmer ,\
+  url_launcher , connectivity_plus , font_awesome_flutter , google_fonts ,\ flutter_screenutil )\
+  ![bookly1-01](https://github.com/yousabgithub/bookly_app/assets/97704843/5be5a1cd-e8b8-4094-83e1-73f4601cec80)
+  ![error-handling-2-01](https://github.com/yousabgithub/bookly_app/assets/97704843/b75c088b-1a01-4394-91ab-f13dce13ccca)
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ 

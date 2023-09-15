@@ -1,5 +1,3 @@
-import 'package:bookly/features/search/presentation/controller/search_cubit.dart';
-import 'package:bookly/features/search/presentation/controller/search_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -7,6 +5,8 @@ import '../../../../../core/common presentation/widgets/custom_book_item.dart';
 import '../../../../../core/common presentation/widgets/custom_error_widget.dart';
 import '../../../../../core/common presentation/widgets/vertical_custom_loading.dart';
 import '../../../../../core/enums/request_state.dart';
+import '../../controller/search_cubit.dart';
+import '../../controller/search_state.dart';
 
 class SearchListView extends StatelessWidget {
   final String textSearch;
@@ -26,7 +26,7 @@ class SearchListView extends StatelessWidget {
             return ListView.builder(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               itemCount: state.searchBooks.length,
               itemBuilder: (BuildContext context, int index) =>
                   CustomBookItem(homeModel: state.searchBooks[index]),

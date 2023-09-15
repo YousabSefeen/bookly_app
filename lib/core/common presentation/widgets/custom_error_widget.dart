@@ -1,10 +1,11 @@
-import 'package:bookly/core/common%20presentation/widgets/custom_button.dart';
-import 'package:bookly/core/utils/app_routers.dart';
-import 'package:bookly/core/utils/app_styles.dart';
-import 'package:bookly/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+import '../../../main.dart';
+import '../../utils/app_routers.dart';
+import '../../utils/app_styles.dart';
+import 'custom_button.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   final String errorMessage;

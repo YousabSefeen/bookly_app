@@ -21,6 +21,7 @@ class HomeRepository implements BaseHomeRepository {
       }
       return Right(freeBooks);
     } catch (error) {
+      print('Error====${error.toString()}');
       if (error is DioException) {
         return Left(
           ServerFailure.fromDioException(error: error),

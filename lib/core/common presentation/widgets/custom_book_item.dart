@@ -1,7 +1,7 @@
-import 'package:bookly/core/models/home_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../features/home/presentation/views/widgets/custom_image.dart';
+import '../../models/home_model.dart';
 import '../../utils/app_routers.dart';
 import '../../utils/app_styles.dart';
 import '../screens/book_details_screen.dart';
@@ -21,7 +21,10 @@ class CustomBookItem extends StatelessWidget {
     return SizedBox(
       height: deviceSize.height * 0.16,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 20, left: 30, right: 51),
+        padding: const EdgeInsets.symmetric(
+          vertical: 10,
+          horizontal: 25,
+        ),
         child: GestureDetector(
           onTap: () => AppRouters.go(
             context: context,
@@ -53,7 +56,8 @@ class CustomBookItem extends StatelessWidget {
                           height: constraints.maxHeight * 0.5,
                           child: Text(
                             bookInfo.title,
-                            style: AppStyles.textStyle18a,
+                            style: AppStyles.textStyle18a
+                                .copyWith(color: Colors.white),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -73,7 +77,7 @@ class CustomBookItem extends StatelessWidget {
                           child: LayoutBuilder(
                             builder: (context, constraints) => Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(
                                   width: constraints.maxWidth * 0.6,

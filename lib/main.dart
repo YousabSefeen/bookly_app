@@ -12,6 +12,7 @@ import 'core/utils/app_routers.dart';
 import 'core/utils/bloc_observer.dart';
 import 'features/home/presentation/controller/all books/computer_books_cubit.dart';
 import 'features/home/presentation/controller/programming books/programming_books_cubit.dart';
+import 'features/search/presentation/controller/search_cubit.dart';
 import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
@@ -79,6 +80,9 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(
               create: (context) =>
                   getIt<ComputerBooksCubit>()..fetchComputerBooks(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<SearchCubit>(),
             ),
           ],
           child: MaterialApp(

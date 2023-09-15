@@ -1,12 +1,12 @@
-import 'package:bookly/core/utils/service_locator.dart';
-import 'package:bookly/features/home/presentation/controller/similar_book_details/similar_books_cubit.dart';
-import 'package:bookly/features/home/presentation/controller/similar_book_details/similar_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../features/home/presentation/controller/similar_book_details/similar_books_cubit.dart';
+import '../../../features/home/presentation/controller/similar_book_details/similar_books_state.dart';
 import '../../../features/home/presentation/views/widgets/custom_image.dart';
 import '../../enums/request_state.dart';
 import '../../utils/app_constants.dart';
+import '../../utils/service_locator.dart';
 import 'custom_error_widget.dart';
 import 'horizontal_custom_loading.dart';
 

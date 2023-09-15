@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/app_styles.dart';
@@ -19,12 +20,14 @@ class CustomField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size deviceSize = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 25),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 25),
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
+          filled: true,
+          fillColor: Colors.black,
+          enabledBorder: customBorder(),
           border: customBorder(),
           focusedBorder: customBorder(),
           hintText: 'Search...',
@@ -37,7 +40,7 @@ class CustomField extends StatelessWidget {
               onPressed: iconOnPressed,
               icon: Icon(
                 FontAwesomeIcons.magnifyingGlass,
-                size: deviceSize.width * 0.06,
+                size: 20.sp,
               ),
             ),
           ),
@@ -52,6 +55,6 @@ class CustomField extends StatelessWidget {
   OutlineInputBorder customBorder() {
     return OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: const BorderSide(color: Colors.blue, width: 1));
+        borderSide: const BorderSide(color: Colors.white, width: 2));
   }
 }

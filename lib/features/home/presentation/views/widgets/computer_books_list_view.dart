@@ -1,5 +1,3 @@
-import 'package:bookly/features/home/presentation/controller/all%20books/computer_books_cubit.dart';
-import 'package:bookly/features/home/presentation/controller/all%20books/computer_books_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,6 +6,8 @@ import '../../../../../core/common presentation/widgets/custom_book_item.dart';
 import '../../../../../core/common presentation/widgets/custom_error_widget.dart';
 import '../../../../../core/common presentation/widgets/vertical_custom_loading.dart';
 import '../../../../../core/enums/request_state.dart';
+import '../../controller/all books/computer_books_cubit.dart';
+import '../../controller/all books/computer_books_state.dart';
 
 class ComputerBooksListView extends StatelessWidget {
   const ComputerBooksListView({Key? key}) : super(key: key);

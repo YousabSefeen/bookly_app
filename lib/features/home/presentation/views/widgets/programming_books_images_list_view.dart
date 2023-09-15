@@ -1,15 +1,15 @@
-import 'package:bookly/core/common%20presentation/screens/book_details_screen.dart';
-import 'package:bookly/core/utils/app_constants.dart';
-import 'package:bookly/core/utils/app_routers.dart';
-import 'package:bookly/features/home/presentation/views/widgets/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/common presentation/screens/book_details_screen.dart';
 import '../../../../../core/common presentation/widgets/custom_error_widget.dart';
 import '../../../../../core/common presentation/widgets/horizontal_custom_loading.dart';
 import '../../../../../core/enums/request_state.dart';
+import '../../../../../core/utils/app_constants.dart';
+import '../../../../../core/utils/app_routers.dart';
 import '../../controller/programming books/programming_books_cubit.dart';
 import '../../controller/programming books/programming_books_state.dart';
+import 'custom_image.dart';
 
 class ProgrammingBooksImagesListView extends StatelessWidget {
   const ProgrammingBooksImagesListView({Key? key}) : super(key: key);
@@ -32,18 +32,21 @@ class ProgrammingBooksImagesListView extends StatelessWidget {
                 itemCount: state.programmingBooks.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                   padding: const EdgeInsets.only(right: 10),
-                  child: GestureDetector(
-                    onTap: () {
-                      AppRouters.go(
-                        context: context,
-                        route: BookDetailsScreen.route,
-                        arguments: state.programmingBooks[index],
-                      );
-                    },
-                    child: CustomImage(
-                      imageUrl: state.programmingBooks[index].volumeInfoModel
-                              .imageLinksModel?.thumbnail ??
-                          AppConstants.messi,
+                  child: SizedBox(
+                    width: 115,
+                    child: GestureDetector(
+                      onTap: () {
+                        AppRouters.go(
+                          context: context,
+                          route: BookDetailsScreen.route,
+                          arguments: state.programmingBooks[index],
+                        );
+                      },
+                      child: CustomImage(
+                        imageUrl: state.programmingBooks[index].volumeInfoModel
+                                .imageLinksModel?.thumbnail ??
+                            AppConstants.messi,
+                      ),
                     ),
                   ),
                 ),

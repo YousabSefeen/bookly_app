@@ -55,8 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool isInternetConnection =
-        CheckInternetCubit.object(context).isInternetConnection == false;
+
     return BlocConsumer<CheckInternetCubit, CheckInternetState>(
       listener: (context, state) {
         if (state is NoInternetConnectionState) {
@@ -74,6 +73,8 @@ class _HomeScreenState extends State<HomeScreen> {
         }
       },
       builder: (context, state) {
+        bool isInternetConnection =
+            CheckInternetCubit.object(context).isInternetConnection == false;
         return isInternetConnection
             ? const NoInternetConnectionScreen()
             : SafeArea(

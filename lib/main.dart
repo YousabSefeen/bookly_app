@@ -3,6 +3,7 @@ import 'package:bookly/core/utils/app_constants.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/features/splash/presentation/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +15,10 @@ import 'features/home/presentation/controller/programming books/programming_book
 import 'features/search/presentation/controller/search_cubit.dart';
 
 void main() {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   Bloc.observer = MyBlocObserver();
   ServiceLocator().init();
   runApp(const MyApp());

@@ -15,6 +15,7 @@ import 'features/home/presentation/controller/programming books/programming_book
 import 'features/search/presentation/controller/search_cubit.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,

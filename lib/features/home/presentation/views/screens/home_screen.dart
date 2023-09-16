@@ -1,6 +1,14 @@
+import 'dart:async';
+
+import 'package:bookly/core/check%20internet/controller/check_internet_cubit.dart';
+import 'package:bookly/core/check%20internet/controller/check_internet_states.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/check internet/presentation/screen/no_internet_connection_screen.dart';
+import '../../../../../core/common presentation/widgets/custom_app_alerts.dart';
+import '../../../../../core/utils/app_routers.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../search/presentation/controller/search_cubit.dart';
 import '../../../../search/presentation/views/widgets/custom_field.dart';
@@ -47,54 +55,80 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverList(
-                delegate: SliverChildListDelegate(
-              [
-                Stack(
-                  children: [
-                    const CustomBackGround(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 50, left: 15),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const CustomLogo(),
-                          Builder(
-                            builder: (context) {
-                              return Form(
-                                key: _key,
-                                child: CustomField(
-                                  controller: searchController,
-                                  validator: (value) {
-                                    if (value!.isEmpty) {
-                                      return 'Please Enter a search value.';
-                                    } else {
-                                      return null;
-                                    }
-                                  },
-                                  onFieldSubmitted: (_) => _submit(context),
-                                  iconOnPressed: () => _submit(context),
+    bool isInternetConnection =
+        CheckInternetCubit.object(context).isInternetConnection == false;
+    return BlocConsumer<CheckInternetCubit, CheckInternetState>(
+      listener: (context, state) {
+        if (state is NoInternetConnectionState) {
+          CustomAppAlerts.alertNoInternet(
+            context: context,
+            message: 'Could Not Connected',
+          );
+          Timer(
+            const Duration(seconds: 4),
+            () => AppRouters.goAndRemoveUntil(
+              context: context,
+              route: NoInternetConnectionScreen.route,
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return isInternetConnection
+            ? const NoInternetConnectionScreen()
+            : SafeArea(
+                child: Scaffold(
+                  body: CustomScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    slivers: [
+                      SliverList(
+                          delegate: SliverChildListDelegate(
+                        [
+                          Stack(
+                            children: [
+                              const CustomBackGround(),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 50, left: 15),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const CustomLogo(),
+                                    Builder(
+                                      builder: (context) {
+                                        return Form(
+                                          key: _key,
+                                          child: CustomField(
+                                            controller: searchController,
+                                            validator: (value) {
+                                              if (value!.isEmpty) {
+                                                return 'Please Enter a search value.';
+                                              } else {
+                                                return null;
+                                              }
+                                            },
+                                            onFieldSubmitted: (_) =>
+                                                _submit(context),
+                                            iconOnPressed: () =>
+                                                _submit(context),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                    const SizedBox(height: 16),
+                                    homeBody(isSearching: _isSearching),
+                                  ],
                                 ),
-                              );
-                            },
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 16),
-                          homeBody(isSearching: _isSearching),
                         ],
-                      ),
-                    ),
-                  ],
+                      )),
+                    ],
+                  ),
                 ),
-              ],
-            )),
-          ],
-        ),
-      ),
+              );
+      },
     );
   }
 

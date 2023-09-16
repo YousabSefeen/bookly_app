@@ -1,3 +1,4 @@
+import 'package:bookly/core/check%20internet/controller/check_internet_cubit.dart';
 import 'package:bookly/features/home/data/repository/home_repository.dart';
 import 'package:bookly/features/home/presentation/controller/similar_book_details/similar_books_cubit.dart';
 import 'package:get_it/get_it.dart';
@@ -32,6 +33,9 @@ class ServiceLocator {
 
     getIt.registerFactory(
       () => SearchCubit(searchRepository: getIt()),
+    );
+    getIt.registerFactory(
+      () => CheckInternetCubit(),
     );
   }
 }

@@ -1,19 +1,22 @@
+import 'dart:async';
+
+import 'package:bookly/core/check%20internet/controller/check_internet_cubit.dart';
+import 'package:bookly/core/check%20internet/controller/check_internet_states.dart';
 import 'package:bookly/core/utils/app_constants.dart';
 import 'package:bookly/core/utils/service_locator.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:bookly/features/splash/presentation/views/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'core/check internet/check_internet.dart';
-import 'core/check internet/no_internet_connection_screen.dart';
+import 'core/check internet/presentation/screen/no_internet_connection_screen.dart';
+import 'core/common presentation/widgets/custom_app_alerts.dart';
 import 'core/utils/app_routers.dart';
 import 'core/utils/bloc_observer.dart';
 import 'features/home/presentation/controller/all books/computer_books_cubit.dart';
 import 'features/home/presentation/controller/programming books/programming_books_cubit.dart';
 import 'features/search/presentation/controller/search_cubit.dart';
-import 'features/splash/presentation/views/screens/splash_screen.dart';
 
 void main() {
   Bloc.observer = MyBlocObserver();
@@ -21,36 +24,10 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   static const route = 'MyApp';
 
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  /// The following code is for checking the internet connection
-  Map _source = {ConnectivityResult.none: false};
-  final MyConnectivity _connectivity = MyConnectivity.instance;
-
-  @override
-  void initState() {
-    super.initState();
-    _connectivity.initialise();
-    _connectivity.myStream.listen((source) {
-      setState(() => _source = source);
-    });
-  }
-
-  @override
-  void dispose() {
-    _connectivity.disposeStream();
-    super.dispose();
-  }
-
-  late Widget home;
 
   @override
   Widget build(BuildContext context) {
@@ -59,18 +36,6 @@ class _MyAppState extends State<MyApp> {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, _) {
-        switch (_source.keys.toList()[0]) {
-          case ConnectivityResult.mobile:
-            home = const SplashScreen();
-            break;
-          case ConnectivityResult.wifi:
-            home = const SplashScreen();
-            break;
-          case ConnectivityResult.none:
-          default:
-            home = const NoInternetConnectionScreen();
-        }
-
         return MultiBlocProvider(
           providers: [
             BlocProvider(
@@ -84,6 +49,9 @@ class _MyAppState extends State<MyApp> {
             BlocProvider(
               create: (context) => getIt<SearchCubit>(),
             ),
+            BlocProvider(
+              create: (context) => getIt<CheckInternetCubit>()..checkInternetConnection(),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -92,10 +60,10 @@ class _MyAppState extends State<MyApp> {
                 color: AppConstants.kPrimaryColor,
               ),
               scaffoldBackgroundColor: AppConstants.kPrimaryColor,
-              textTheme:
-                  GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
+              textTheme: GoogleFonts.montserratTextTheme(
+                  ThemeData.dark().textTheme),
             ),
-            home: home,
+            home: const SplashScreen(),
             routes: AppRouters.routers,
           ),
         );

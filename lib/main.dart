@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:bookly/core/check%20internet/controller/check_internet_cubit.dart';
-import 'package:bookly/core/check%20internet/controller/check_internet_states.dart';
 import 'package:bookly/core/utils/app_constants.dart';
 import 'package:bookly/core/utils/service_locator.dart';
 import 'package:bookly/features/splash/presentation/views/screens/splash_screen.dart';
@@ -10,8 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'core/check internet/presentation/screen/no_internet_connection_screen.dart';
-import 'core/common presentation/widgets/custom_app_alerts.dart';
 import 'core/utils/app_routers.dart';
 import 'core/utils/bloc_observer.dart';
 import 'features/home/presentation/controller/all books/computer_books_cubit.dart';
@@ -50,7 +45,8 @@ class MyApp extends StatelessWidget {
               create: (context) => getIt<SearchCubit>(),
             ),
             BlocProvider(
-              create: (context) => getIt<CheckInternetCubit>()..checkInternetConnection(),
+              create: (context) =>
+                  getIt<CheckInternetCubit>()..checkInternetConnection(),
             ),
           ],
           child: MaterialApp(
@@ -60,8 +56,8 @@ class MyApp extends StatelessWidget {
                 color: AppConstants.kPrimaryColor,
               ),
               scaffoldBackgroundColor: AppConstants.kPrimaryColor,
-              textTheme: GoogleFonts.montserratTextTheme(
-                  ThemeData.dark().textTheme),
+              textTheme:
+                  GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
             ),
             home: const SplashScreen(),
             routes: AppRouters.routers,

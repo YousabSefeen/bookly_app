@@ -3,6 +3,7 @@ import 'package:bookly/core/utils/api_constants.dart';
 import 'package:bookly/features/home/data/repository/base_home_repository.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../../../core/models/home_model.dart';
 
@@ -21,7 +22,9 @@ class HomeRepository implements BaseHomeRepository {
       }
       return Right(freeBooks);
     } catch (error) {
-      print('Error====${error.toString()}');
+      if (kDebugMode) {
+        print('Error====${error.toString()}');
+      }
       if (error is DioException) {
         return Left(
           ServerFailure.fromDioException(error: error),

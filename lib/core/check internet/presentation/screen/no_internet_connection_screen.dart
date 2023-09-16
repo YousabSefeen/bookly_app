@@ -22,43 +22,40 @@ class NoInternetConnectionScreen extends StatelessWidget {
               context: context,
               route: HomeScreen.route,
             );
-
-
           }
         },
         child: LayoutBuilder(
-          builder: (context, constraints) =>
-              Center(
-                child: Column(
-                  children: [
-                    SizedBox(height: constraints.maxHeight * 0.15),
-                    Container(
-                      height: constraints.maxHeight * 0.50,
-                      margin: EdgeInsets.symmetric(horizontal: 20.w),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
-                          'assets/images/no_internet.png',
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+          builder: (context, constraints) => Center(
+            child: Column(
+              children: [
+                SizedBox(height: constraints.maxHeight * 0.15),
+                Container(
+                  height: constraints.maxHeight * 0.50,
+                  margin: EdgeInsets.symmetric(horizontal: 20.w),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: Image.asset(
+                      'assets/images/no_internet.png',
+                      fit: BoxFit.cover,
                     ),
-                    SizedBox(
-                      height: constraints.maxHeight * 0.20,
-                      child: Text(
-                        'Can\'t connect..check internet.',
-                        style: TextStyle(
-                          fontSize: 30.sp,
-                          color: Colors.grey,
-                          fontWeight: FontWeight.w800,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(height: constraints.maxHeight * 0.15),
-                  ],
+                  ),
                 ),
-              ),
+                SizedBox(
+                  height: constraints.maxHeight * 0.20,
+                  child: Text(
+                    'Can\'t connect..check internet.',
+                    style: TextStyle(
+                      fontSize: 30.sp,
+                      color: Colors.grey,
+                      fontWeight: FontWeight.w800,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(height: constraints.maxHeight * 0.15),
+              ],
+            ),
+          ),
         ),
       ),
     );

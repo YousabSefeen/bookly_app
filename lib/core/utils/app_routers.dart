@@ -33,6 +33,7 @@ abstract class AppRouters {
   }) {
     Navigator.of(context).pushReplacementNamed(route, arguments: arguments);
   }
+
   static void goAndRemoveUntil({
     required BuildContext context,
     required String route,
@@ -40,7 +41,6 @@ abstract class AppRouters {
   }) =>
       Navigator.of(context, rootNavigator: true).pushNamedAndRemoveUntil(
         route,
-            (Route<dynamic> route) => false,
+        (Route<dynamic> route) => false,
       );
-
 }
